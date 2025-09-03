@@ -84,7 +84,7 @@ int main (){
     printf("Area: %.2f km2\n", area);
     printf("Numero de Pontos Turisticos: %d\n", turistico);
 
-
+return 0 
 
 }
 
