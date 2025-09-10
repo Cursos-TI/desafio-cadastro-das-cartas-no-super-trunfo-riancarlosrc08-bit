@@ -7,12 +7,19 @@ int main (){
     char estado, estado2;
     char carta[3], carta2[3];
     char cidade[30], cidade2[30];
-    int populacao, populacao2;
+    unsigned long int populacao, populacao2;
     float area, area2;
     float pib, pib2;
     int turistico, turistico2;
     float densidade, densidade2;
     float pibpc, pibpc2;
+    float superpoder, superpoder2;
+
+    //variaveis para comparação das cartas
+
+    char resultadoPopulacao, resultadoPib, resultadoArea, resultadoTuristico;
+    char resultadoDensidade, resultadoPibpc, resultadoSuperpoder;
+    
    
     /*Abaixo incio a solictação das informações para o usuario*/
     printf("Digite o estado de sua Primeira Carta (A-H)): \n");
@@ -28,7 +35,7 @@ int main (){
 
   
     printf("Digite a populacao de sua Primeira Carta: \n");
-    scanf("%d", &populacao);    
+    scanf("%lu", &populacao);    
 
     printf("Digite a area de sua Primeira Carta: \n");  
     scanf("%f", &area);
@@ -41,6 +48,7 @@ int main (){
 
     densidade = (float) populacao / area; 
     pibpc = (float) pib / populacao;
+    superpoder = (float) populacao + pib + area + turistico + (-densidade) + pibpc;
     
     //RESUMO DA CARTA 1
 
@@ -49,12 +57,13 @@ int main (){
     printf("Estado: %c\n", estado);
     printf("Codigo: %c%s\n",estado,carta);  
     printf("Cidade: %s\n", cidade);
-    printf("Populacao: %d\n", populacao);
+    printf("Populacao: %lu\n", populacao);
     printf("PIB: %.2f bilhões de reais \n", pib);
     printf("Area: %.2f km2\n", area);
     printf("Numero de Pontos Turisticos: %d\n", turistico);
     printf("Densidade Demografica: %.2f hab/km2\n", densidade);
     printf("PIB per Capita: %.2f reais\n", pibpc);
+    printf("Super Poder da Carta: %.2f\n", superpoder);
 
     // SOLICITANDO OS DADOS DA SEGUNDA CARTA
 
@@ -74,7 +83,7 @@ int main (){
     // getchar();  // Limpa o buffer
 
     printf("Digite a populacao de sua Segunda Carta: \n");
-    scanf("%d", &populacao2);    
+    scanf("%lu", &populacao2);    
 
     printf("Digite a area de sua Segunda Carta: \n");  
     scanf("%f", &area2);
@@ -87,6 +96,8 @@ int main (){
 
     densidade2 = (float) populacao2 / area2;
     pibpc2 = (float) pib2 / populacao2;
+    superpoder2 = (float) populacao2 + pib2 + area2 + turistico2 + (-densidade2) + pibpc2;
+    
 
 //RESUMO DA CARTA 2
 
@@ -95,21 +106,61 @@ int main (){
     printf("Estado: %c\n", estado2);
     printf("Codigo: %c%s\n",estado2,carta2);  
     printf("Cidade: %s\n", cidade2);
-    printf("Populacao: %d\n", populacao2);
+    printf("Populacao: %lu\n", populacao2);
     printf("PIB: %.2f bilhões de reais \n", pib2);
     printf("Area: %.2f km2\n", area2);
     printf("Numero de Pontos Turisticos: %d\n", turistico2);
     printf("Densidade Demografica: %.2f hab/km2\n", densidade2);
     printf("PIB per Capita: %.2f reais\n", pibpc2);
+    printf("Super Poder da Carta: %.2f\n", superpoder2);
 
 //COMPARAÇÃO DAS CARTAS 
+
+    printf("\n*****Agora vamos comparar as cartas*****\n\n");
+
+    printf("População: Carta %s venceu (%s)\n", 
+           (populacao > populacao2) ? carta : carta2, 
+           (populacao > populacao2) ? "1" : "0");
+           //Usei o operador ternário para determinar qual carta venceu em cada comparação.
+
+    printf("PIB: Carta %s venceu (%s)\n", 
+           (pib > pib2) ? carta : carta2, 
+           (pib > pib2) ? "1" : "0");
+           //Usei o operador ternário para determinar qual carta venceu em cada comparação.
+
+    printf("Área: Carta %s venceu (%s)\n", 
+           (area > area2) ? carta : carta2, 
+           (area > area2) ? "1" : "0");
+            //Usei o operador ternário para determinar qual carta venceu em cada comparação.
+
+
+    printf("Número de Pontos Turísticos: Carta %s venceu (%s)\n", 
+           (turistico > turistico2) ? carta : carta2,  
+           (turistico > turistico2) ? "1" : "0");
+            //Usei o operador ternário para determinar qual carta venceu em cada comparação.
+
+    printf("Densidade Demográfica:Carta %s venceu (%s)\n", 
+           (densidade < densidade2) ? carta : carta2,  
+           (densidade < densidade2) ? "1" : "0");
+            //Usei o operador ternário para determinar qual carta venceu em cada comparação.
+    printf("PIB per Capita: Carta %s venceu (%s)\n", 
+           (pibpc > pibpc2) ? carta : carta2, 
+           (pibpc > pibpc2) ? "1" : "0");
+            //Usei o operador ternário para determinar qual carta venceu em cada comparação.
+    printf("Super Poder da Carta: Carta %s venceu (%s) \n", 
+           (superpoder > superpoder2) ? carta : carta2,
+           (superpoder > superpoder2) ? "1" : "0");
+            //Usei o operador ternário para determinar qual carta venceu em cada comparação.
+
+/*
+//USADO PARA TESTES
 
     printf("\nAgora vamos comparar as cartas\n\n");
     printf("\nCarta 01\n\n");
     printf("Estado: %c\n", estado);
     printf("Codigo: %c%s\n",estado,carta);  
     printf("Cidade: %s\n", cidade);
-    printf("Populacao: %d\n", populacao);
+    printf("Populacao: %lu\n", populacao);
     printf("PIB: %.2f bilhões de reais \n", pib);
     printf("Area: %.2f km2\n", area);
     printf("Numero de Pontos Turisticos: %d\n", turistico);
@@ -121,20 +172,21 @@ int main (){
     printf("Estado: %c\n", estado2);
     printf("Codigo: %c%s\n",estado2,carta2);  
     printf("Cidade: %s\n", cidade2);
-    printf("Populacao: %d\n", populacao2);
+    printf("Populacao: %lu\n", populacao2);
     printf("PIB: %.2f bilhões de reais \n", pib2);
     printf("Area: %.2f km2\n", area2);
     printf("Numero de Pontos Turisticos: %d\n", turistico2);
     printf("Densidade Demografica: %.2f hab/km2\n", densidade2);
     printf("PIB per Capita: %.2f reais\n\n", pibpc2);
 
-
+*/
 
 
 
 
 
 //AGRADECIMENTO POR JOGAR O JOGO
+
     printf("\n ****** Obrigado por jogar nosso jogo de cartas Super Trunfo ******\n");
 
 return 0;
